@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios Práticos - JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Repertório de Exercícios JavaScript</h1>
+        <p>Disciplina: Programação com JavaScript | Prof. Celso Barreto</p>
+    </header>
+
+    <main class="container">
+
+        <section class="bloco">
+            <h2>Bloco I: Condicionais</h2>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">1</span>
+                    <h3>Exercício 1: Classificação de Consumo de Energia</h3>
+                </div>
+                <div class="card-body">
+                    <label>Digite o seu consumo mensal de energia (kWh):</label>
+                    <input type="number" id="consumo-mensal" placeholder="Ex: 150">
+                    <button class="btn-toggle" onclick="toggleERun('res-1', classificacaoEnergia)">Ver Resultado</button>
+                    <div id="res-1" class="painel-resultado">
+                        <p id="classificacao"></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">2</span>
+                    <h3>Exercício 2: Elegibilidade para Bolsa Acadêmica</h3>
+                </div>
+                <div class="card-body">
+                    <label>Média geral do estudante:</label>
+                    <input type="number" id="media-aluno" placeholder="Ex: 8.2">
+                    <label>Frequência (%):</label>
+                    <input type="number" id="frequencia-aluno" placeholder="Ex: 87">
+                    <label>Renda per capita familiar (R$):</label>
+                    <input type="number" id="renda-familiar-aluno" placeholder="Ex: 1350">
+                    <button class="btn-toggle" onclick="toggleERun('res-2', verificarElegibilidade)">Ver Resultado</button>
+                    <div id="res-2" class="painel-resultado">
+                        <p id="situacao"></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">3</span>
+                    <h3>Exercício 3: Triagem de Prioridade em Atendimento</h3>
+                </div>
+                <div class="card-body">
+                    <label>Idade:</label>
+                    <input type="number" id="q3-idade" placeholder="Ex: 65">
+                    <label>Condição Especial / PCD?</label>
+                    <select id="q3-condicao">
+                        <option value="nao">Não</option>
+                        <option value="sim">Sim</option>
+                    </select>
+                    <button class="btn-toggle" onclick="toggleERun('res-3', ex3)">Ver Resultado</button>
+                    <div id="res-3" class="painel-resultado"><p id="out-3"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">4</span>
+                    <h3>Exercício 4: Autorização de Acesso a Laboratório</h3>
+                </div>
+                <div class="card-body">
+                    <label>Matrícula Ativa?</label>
+                    <select id="q4-matricula"><option value="sim">Sim</option><option value="nao">Não</option></select>
+                    <label>Treinamento de Segurança?</label>
+                    <select id="q4-treino"><option value="sim">Sim</option><option value="nao">Não</option></select>
+                    <label>Horário Permitido (8h - 18h)? Hora Atual:</label>
+                    <input type="number" id="q4-hora" placeholder="Ex: 14">
+                    <button class="btn-toggle" onclick="toggleERun('res-4', ex4)">Ver Resultado</button>
+                    <div id="res-4" class="painel-resultado"><p id="out-4"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">5</span>
+                    <h3>Exercício 5: Cálculo de Tarifa de Estacionamento</h3>
+                </div>
+                <div class="card-body">
+                    <label>Horas de permanência:</label>
+                    <input type="number" id="q5-horas" placeholder="Ex: 3">
+                    <button class="btn-toggle" onclick="toggleERun('res-5', ex5)">Ver Resultado</button>
+                    <div id="res-5" class="painel-resultado"><p id="out-5"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">6</span>
+                    <h3>Exercício 6: Desconto Progressivo em Loja</h3>
+                </div>
+                <div class="card-body">
+                    <label>Valor total da compra (R$):</label>
+                    <input type="number" id="q6-total" placeholder="Ex: 250">
+                    <label>Membro Fidelidade?</label>
+                    <select id="q6-fidelidade"><option value="sim">Sim</option><option value="nao">Não</option></select>
+                    <button class="btn-toggle" onclick="toggleERun('res-6', ex6)">Ver Resultado</button>
+                    <div id="res-6" class="painel-resultado"><p id="out-6"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">7</span>
+                    <h3>Exercício 7: Validação de Nota e Situação Acadêmica</h3>
+                </div>
+                <div class="card-body">
+                    <label>Nota final (0 a 10):</label>
+                    <input type="number" id="q7-nota" placeholder="Ex: 5.5">
+                    <label>Frequência (%):</label>
+                    <input type="number" id="q7-freq" placeholder="Ex: 80">
+                    <button class="btn-toggle" onclick="toggleERun('res-7', ex7)">Ver Resultado</button>
+                    <div id="res-7" class="painel-resultado"><p id="out-7"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">8</span>
+                    <h3>Exercício 8: Escolha de Plano de Internet</h3>
+                </div>
+                <div class="card-body">
+                    <label>Consumo mensal (GB):</label>
+                    <input type="number" id="q8-gb" placeholder="Ex: 300">
+                    <label>Qtd Dispositivos:</label>
+                    <input type="number" id="q8-disp" placeholder="Ex: 6">
+                    <button class="btn-toggle" onclick="toggleERun('res-8', ex8)">Ver Resultado</button>
+                    <div id="res-8" class="painel-resultado"><p id="out-8"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">9</span>
+                    <h3>Exercício 9: Alerta de Estoque</h3>
+                </div>
+                <div class="card-body">
+                    <label>Estoque Atual:</label>
+                    <input type="number" id="q9-atual" placeholder="Ex: 5">
+                    <label>Estoque Mínimo:</label>
+                    <input type="number" id="q9-min" placeholder="Ex: 20">
+                    <button class="btn-toggle" onclick="toggleERun('res-9', ex9)">Ver Resultado</button>
+                    <div id="res-9" class="painel-resultado"><p id="out-9"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">10</span>
+                    <h3>Exercício 10: Conversor de Temperatura com Validação</h3>
+                </div>
+                <div class="card-body">
+                    <label>Temperatura em Celsius (°C):</label>
+                    <input type="number" id="q10-temp" placeholder="Ex: 25">
+                    <button class="btn-toggle" onclick="toggleERun('res-10', ex10)">Ver Resultado</button>
+                    <div id="res-10" class="painel-resultado"><p id="out-10"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">11</span>
+                    <h3>Exercício 11: Aprovação de Crédito Didático</h3>
+                </div>
+                <div class="card-body">
+                    <label>Renda Mensal (R$):</label>
+                    <input type="number" id="q11-renda" placeholder="Ex: 4000">
+                    <label>Parcela / Comprometimento (R$):</label>
+                    <input type="number" id="q11-parcela" placeholder="Ex: 1000">
+                    <label>Histórico Negativado?</label>
+                    <select id="q11-historico"><option value="limpo">Não (Limpo)</option><option value="sujo">Sim (Restrição)</option></select>
+                    <button class="btn-toggle" onclick="toggleERun('res-11', ex11)">Ver Resultado</button>
+                    <div id="res-11" class="painel-resultado"><p id="out-11"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">12</span>
+                    <h3>Exercício 12: Controle de Velocidade em Via simulada</h3>
+                </div>
+                <div class="card-body">
+                    <label>Velocidade do Veículo (km/h):</label>
+                    <input type="number" id="q12-vel" placeholder="Ex: 95">
+                    <label>Limite da Via (km/h):</label>
+                    <input type="number" id="q12-limite" placeholder="Ex: 80">
+                    <button class="btn-toggle" onclick="toggleERun('res-12', ex12)">Ver Resultado</button>
+                    <div id="res-12" class="painel-resultado"><p id="out-12"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">13</span>
+                    <h3>Exercício 13: Avaliação de Desempenho de Servidor</h3>
+                </div>
+                <div class="card-body">
+                    <label>Uso de CPU (%):</label>
+                    <input type="number" id="q13-cpu" placeholder="Ex: 85">
+                    <label>Uso de Memória (%):</label>
+                    <input type="number" id="q13-mem" placeholder="Ex: 90">
+                    <button class="btn-toggle" onclick="toggleERun('res-13', ex13)">Ver Resultado</button>
+                    <div id="res-13" class="painel-resultado"><p id="out-13"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">14</span>
+                    <h3>Exercício 14: Validação de Triângulo</h3>
+                </div>
+                <div class="card-body">
+                    <label>Lado A:</label><input type="number" id="q14-a">
+                    <label>Lado B:</label><input type="number" id="q14-b">
+                    <label>Lado C:</label><input type="number" id="q14-c">
+                    <button class="btn-toggle" onclick="toggleERun('res-14', ex14)">Ver Resultado</button>
+                    <div id="res-14" class="painel-resultado"><p id="out-14"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">15</span>
+                    <h3>Exercício 15: Cálculo de Imposto em Faixas Simuladas</h3>
+                </div>
+                <div class="card-body">
+                    <label>Renda Anual (R$):</label>
+                    <input type="number" id="q15-renda" placeholder="Ex: 45000">
+                    <button class="btn-toggle" onclick="toggleERun('res-15', ex15)">Ver Resultado</button>
+                    <div id="res-15" class="painel-resultado"><p id="out-15"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">16</span>
+                    <h3>Exercício 16: Classificação de Índice de Qualidade</h3>
+                </div>
+                <div class="card-body">
+                    <label>Índice de Qualidade (0 a 100):</label>
+                    <input type="number" id="q16-indice" placeholder="Ex: 80">
+                    <button class="btn-toggle" onclick="toggleERun('res-16', ex16)">Ver Resultado</button>
+                    <div id="res-16" class="painel-resultado"><p id="out-16"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">17</span>
+                    <h3>Exercício 17: Regras de Frete de Comércio Eletrônico</h3>
+                </div>
+                <div class="card-body">
+                    <label>Valor da Compra (R$):</label>
+                    <input type="number" id="q17-valor" placeholder="Ex: 180">
+                    <label>Região:</label>
+                    <select id="q17-regiao">
+                        <option value="sudeste">Sudeste</option>
+                        <option value="sul">Sul</option>
+                        <option value="outros">Norte / Nordeste / Centro-Oeste</option>
+                    </select>
+                    <label>Membro VIP?</label>
+                    <select id="q17-vip"><option value="sim">Sim</option><option value="nao">Não</option></select>
+                    <button class="btn-toggle" onclick="toggleERun('res-17', ex17)">Ver Resultado</button>
+                    <div id="res-17" class="painel-resultado"><p id="out-17"></p></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="bloco">
+            <h2>Bloco II: Estruturas de Repetição</h2>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">18</span>
+                    <h3>Exercício 18: Monitoramento Semanal de Consumo</h3>
+                </div>
+                <div class="card-body">
+                    <label>Meta de consumo (kWh): </label>
+                    <input type="number" id="meta" value="20"><br><br>
+                    <label>Dia 1: <input type="number" class="dia-consumo"></label>
+                    <label>Dia 2: <input type="number" class="dia-consumo"></label>
+                    <label>Dia 3: <input type="number" class="dia-consumo"></label>
+                    <label>Dia 4: <input type="number" class="dia-consumo"></label>
+                    <label>Dia 5: <input type="number" class="dia-consumo"></label>
+                    <label>Dia 6: <input type="number" class="dia-consumo"></label>
+                    <label>Dia 7: <input type="number" class="dia-consumo"></label>
+
+                    <button class="btn-toggle" onclick="toggleERun('resultado', calcularConsumo)">Ver Resultado</button>
+                    <div id="resultado" class="painel-resultado"></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">19</span>
+                    <h3>Exercício 19: Tabuada Personalizada</h3>
+                </div>
+                <div class="card-body">
+                    <label>Número:</label><input type="number" id="q19-num" placeholder="Ex: 7">
+                    <label>Limite:</label><input type="number" id="q19-limite" placeholder="Ex: 10">
+                    <button class="btn-toggle" onclick="toggleERun('res-19', ex19)">Ver Resultado</button>
+                    <div id="res-19" class="painel-resultado"><p id="out-19"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">20</span>
+                    <h3>Exercício 20: Contagem Regressiva de Lançamento</h3>
+                </div>
+                <div class="card-body">
+                    <label>Início da Contagem:</label><input type="number" id="q20-inicio" placeholder="Ex: 10">
+                    <button class="btn-toggle" onclick="toggleERun('res-20', ex20)">Ver Resultado</button>
+                    <div id="res-20" class="painel-resultado"><p id="out-20"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">21</span>
+                    <h3>Exercício 21: Soma de Valores até Condição de Parada</h3>
+                </div>
+                <div class="card-body">
+                    <label>Digite valores separados por vírgula (Termine com -1 ou 'sair'):</label>
+                    <input type="text" id="q21-lista" placeholder="Ex: 10, 20.5, 5, -1">
+                    <button class="btn-toggle" onclick="toggleERun('res-21', ex21)">Ver Resultado</button>
+                    <div id="res-21" class="painel-resultado"><p id="out-21"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">22</span>
+                    <h3>Exercício 22: Tentativas de Autenticação</h3>
+                </div>
+                <div class="card-body">
+                    <p class="subtext">Senha correta configurada: "1234"</p>
+                    <label>Digite a Senha:</label>
+                    <input type="password" id="q22-senha">
+                    <button class="btn-toggle" onclick="toggleERun('res-22', ex22)">Ver Resultado</button>
+                    <div id="res-22" class="painel-resultado"><p id="out-22"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">23</span>
+                    <h3>Exercício 23: Sequência de Números Pares e Ímpares</h3>
+                </div>
+                <div class="card-body">
+                    <label>Limite Inicial:</label><input type="number" id="q23-ini">
+                    <label>Limite Final:</label><input type="number" id="q23-fim">
+                    <button class="btn-toggle" onclick="toggleERun('res-23', ex23)">Ver Resultado</button>
+                    <div id="res-23" class="painel-resultado"><p id="out-23"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">24</span>
+                    <h3>Exercício 24: Fatorial com Validação</h3>
+                </div>
+                <div class="card-body">
+                    <label>Número N:</label><input type="number" id="q24-num" placeholder="Ex: 5">
+                    <button class="btn-toggle" onclick="toggleERun('res-24', ex24)">Ver Resultado</button>
+                    <div id="res-24" class="painel-resultado"><p id="out-24"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">25</span>
+                    <h3>Exercício 25: Levantamento de Notas de uma Turma</h3>
+                </div>
+                <div class="card-body">
+                    <label>Insira as notas da turma (separadas por vírgula):</label>
+                    <input type="text" id="q25-notas" placeholder="Ex: 8.5, 4.0, 6.2, 9.0">
+                    <button class="btn-toggle" onclick="toggleERun('res-25', ex25)">Ver Resultado</button>
+                    <div id="res-25" class="painel-resultado"><p id="out-25"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">26</span>
+                    <h3>Exercício 26: Simulação de Crescimento de Investimento</h3>
+                </div>
+                <div class="card-body">
+                    <label>Valor Inicial (R$):</label><input type="number" id="q26-ini" placeholder="Ex: 1000">
+                    <label>Taxa de Juros por Período (%):</label><input type="number" id="q26-taxa" placeholder="Ex: 1.5">
+                    <label>Valor Alvo (R$):</label><input type="number" id="q26-alvo" placeholder="Ex: 1500">
+                    <button class="btn-toggle" onclick="toggleERun('res-26', ex26)">Ver Resultado</button>
+                    <div id="res-26" class="painel-resultado"><p id="out-26"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">27</span>
+                    <h3>Exercício 27: Geração de Sequência de Fibonacci</h3>
+                </div>
+                <div class="card-body">
+                    <label>Quantidade de termos N:</label><input type="number" id="q27-n" placeholder="Ex: 8">
+                    <button class="btn-toggle" onclick="toggleERun('res-27', ex27)">Ver Resultado</button>
+                    <div id="res-27" class="painel-resultado"><p id="out-27"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">28</span>
+                    <h3>Exercício 28: Verificação de Número Primo</h3>
+                </div>
+                <div class="card-body">
+                    <label>Número para teste:</label><input type="number" id="q28-num" placeholder="Ex: 29">
+                    <button class="btn-toggle" onclick="toggleERun('res-28', ex28)">Ver Resultado</button>
+                    <div id="res-28" class="painel-resultado"><p id="out-28"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">29</span>
+                    <h3>Exercício 29: Pesquisa de Satisfação</h3>
+                </div>
+                <div class="card-body">
+                    <label>Digite notas de 1 a 5 (separadas por vírgula):</label>
+                    <input type="text" id="q29-notas" placeholder="Ex: 5, 4, 1, 3, 5, 9, 2">
+                    <button class="btn-toggle" onclick="toggleERun('res-29', ex29)">Ver Resultado</button>
+                    <div id="res-29" class="painel-resultado"><p id="out-29"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">30</span>
+                    <h3>Exercício 30: Controle de Caixa Diário</h3>
+                </div>
+                <div class="card-body">
+                    <label>Operações (Formato: tipo,valor; Ex: E,100; S,30; E,50):</label>
+                    <input type="text" id="q30-ops" placeholder="E,100; S,30; E,50">
+                    <button class="btn-toggle" onclick="toggleERun('res-30', ex30)">Ver Resultado</button>
+                    <div id="res-30" class="painel-resultado"><p id="out-30"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">31</span>
+                    <h3>Exercício 31: Jogo de Adivinhação com Limite de Tentativas</h3>
+                </div>
+                <div class="card-body">
+                    <p class="subtext">Número Secreto configurado: 42 (Max 5 tentativas)</p>
+                    <label>Seu Palpite:</label><input type="number" id="q31-palpite">
+                    <button class="btn-toggle" onclick="toggleERun('res-31', ex31)">Ver Resultado</button>
+                    <div id="res-31" class="painel-resultado"><p id="out-31"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">32</span>
+                    <h3>Exercício 32: Múltiplos em Intervalo</h3>
+                </div>
+                <div class="card-body">
+                    <label>Início:</label><input type="number" id="q32-ini" value="1">
+                    <label>Fim:</label><input type="number" id="q32-fim" value="50">
+                    <label>Divisor 1:</label><input type="number" id="q32-d1" value="3">
+                    <label>Divisor 2:</label><input type="number" id="q32-d2" value="5">
+                    <button class="btn-toggle" onclick="toggleERun('res-32', ex32)">Ver Resultado</button>
+                    <div id="res-32" class="painel-resultado"><p id="out-32"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">33</span>
+                    <h3>Exercício 33: Padrão Textual com Laços Aninhados</h3>
+                </div>
+                <div class="card-body">
+                    <label>Tamanho do Padrão (linhas):</label><input type="number" id="q33-tam" value="5">
+                    <label>Caractere:</label><input type="text" id="q33-char" value="*">
+                    <button class="btn-toggle" onclick="toggleERun('res-33', ex33)">Ver Resultado</button>
+                    <div id="res-33" class="painel-resultado"><pre id="out-33"></pre></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">34</span>
+                    <h3>Exercício 34: Processamento de Leituras de Sensor</h3>
+                </div>
+                <div class="card-body">
+                    <label>20 Leituras separadas por vírgula (Faixa Válida: 0 a 100):</label>
+                    <input type="text" id="q34-leituras" placeholder="10, 20, 150, 40, -5, 50, ...">
+                    <button class="btn-toggle" onclick="toggleERun('res-34', ex34)">Ver Resultado</button>
+                    <div id="res-34" class="painel-resultado"><p id="out-34"></p></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="bloco">
+            <h2>Bloco III: Vetores (Arrays) e Integração</h2>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">35</span>
+                    <h3>Exercício 35: Cadastro e Análise de Notas em Vetor</h3>
+                </div>
+                <div class="card-body">
+                    <label>Digite notas separadas por vírgula:</label>
+                    <input type="text" id="q35-vetor" placeholder="Ex: 7.5, 8.0, 5.0, 9.5, 6.0">
+                    <button class="btn-toggle" onclick="toggleERun('res-35', ex35)">Ver Resultado</button>
+                    <div id="res-35" class="painel-resultado"><p id="out-35"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">36</span>
+                    <h3>Exercício 36: Controle de Consumo Mensal</h3>
+                </div>
+                <div class="card-body">
+                    <label>12 Consumos Mensais (separados por vírgula):</label>
+                    <input type="text" id="q36-meses" placeholder="120, 150, 130, 200, 210, ...">
+                    <button class="btn-toggle" onclick="toggleERun('res-36', ex36)">Ver Resultado</button>
+                    <div id="res-36" class="painel-resultado"><p id="out-36"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">37</span>
+                    <h3>Exercício 37: Busca de Produto por Código</h3>
+                </div>
+                <div class="card-body">
+                    <p class="subtext">Lista no sistema: [101, 204, 305, 408, 512, 630]</p>
+                    <label>Código do Produto a Buscar:</label>
+                    <input type="number" id="q37-codigo" placeholder="Ex: 305">
+                    <button class="btn-toggle" onclick="toggleERun('res-37', ex37)">Ver Resultado</button>
+                    <div id="res-37" class="painel-resultado"><p id="out-37"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">38</span>
+                    <h3>Exercício 38: Contagem de Ocorrências em Vetor</h3>
+                </div>
+                <div class="card-body">
+                    <label>Vetor de números (por vírgula):</label>
+                    <input type="text" id="q38-vetor" value="5, 2, 8, 5, 1, 5, 9, 2">
+                    <label>Valor de Referência:</label>
+                    <input type="number" id="q38-ref" value="5">
+                    <button class="btn-toggle" onclick="toggleERun('res-38', ex38)">Ver Resultado</button>
+                    <div id="res-38" class="painel-resultado"><p id="out-38"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">39</span>
+                    <h3>Exercício 39: Separação de Valores Pares e Ímpares</h3>
+                </div>
+                <div class="card-body">
+                    <label>Vetor de Inteiros:</label>
+                    <input type="text" id="q39-vetor" placeholder="12, 7, 5, 18, 22, 9, 3">
+                    <button class="btn-toggle" onclick="toggleERun('res-39', ex39)">Ver Resultado</button>
+                    <div id="res-39" class="painel-resultado"><p id="out-39"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">40</span>
+                    <h3>Exercício 40: Remoção Lógica de Duplicados</h3>
+                </div>
+                <div class="card-body">
+                    <label>Lista com Duplicados (separados por vírgula):</label>
+                    <input type="text" id="q40-vetor" value="A, B, A, C, B, D, A">
+                    <button class="btn-toggle" onclick="toggleERun('res-40', ex40)">Ver Resultado</button>
+                    <div id="res-40" class="painel-resultado"><p id="out-40"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">41</span>
+                    <h3>Exercício 41: Inversão Manual de Vetor</h3>
+                </div>
+                <div class="card-body">
+                    <label>Elementos do Vetor:</label>
+                    <input type="text" id="q41-vetor" value="10, 20, 30, 40, 50">
+                    <button class="btn-toggle" onclick="toggleERun('res-41', ex41)">Ver Resultado</button>
+                    <div id="res-41" class="painel-resultado"><p id="out-41"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">42</span>
+                    <h3>Exercício 42: Ordenação Simples Sem Método Pronto</h3>
+                </div>
+                <div class="card-body">
+                    <label>Lista desordenada:</label>
+                    <input type="text" id="q42-vetor" value="45, 12, 89, 3, 27">
+                    <button class="btn-toggle" onclick="toggleERun('res-42', ex42)">Ver Resultado</button>
+                    <div id="res-42" class="painel-resultado"><p id="out-42"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">43</span>
+                    <h3>Exercício 43: Ranking de Desempenho</h3>
+                </div>
+                <div class="card-body">
+                    <label>Pontuações obtidas:</label>
+                    <input type="text" id="q43-vetor" value="85, 92, 78, 92, 100, 60">
+                    <button class="btn-toggle" onclick="toggleERun('res-43', ex43)">Ver Resultado</button>
+                    <div id="res-43" class="painel-resultado"><p id="out-43"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">44</span>
+                    <h3>Exercício 44: Análise de Temperaturas Semanais</h3>
+                </div>
+                <div class="card-body">
+                    <label>14 Temperaturas Diárias (separadas por vírgula):</label>
+                    <input type="text" id="q44-vetor" value="22, 24, 28, 30, 31, 29, 25, 23, 22, 20, 27, 28, 29, 26">
+                    <label>Faixa Conforto Mínima/Máxima:</label>
+
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="q44-min" value="21">
+                        <input type="number" id="q44-max" value="26">
+                    </div>
+
+                    <button class="btn-toggle" onclick="toggleERun('res-44', ex44)">Ver Resultado</button>
+                    <div id="res-44" class="painel-resultado"><p id="out-44"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">45</span>
+                    <h3>Exercício 45: Carrinho de Compras em Arrays Paralelos</h3>
+                </div>
+                <div class="card-body">
+                    <label>Nomes dos Produtos (por vírgula):</label>
+                    <input type="text" id="q45-prods" value="Arroz, Feijão, Café, Leite">
+                    <label>Preços Correspondentes (por vírgula):</label>
+                    <input type="text" id="q45-precos" value="25.50, 8.90, 14.00, 5.20">
+                    <button class="btn-toggle" onclick="toggleERun('res-45', ex45)">Ver Resultado</button>
+                    <div id="res-45" class="painel-resultado"><p id="out-45"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">46</span>
+                    <h3>Exercício 46: Fila de Atendimento Simplificada</h3>
+                </div>
+                <div class="card-body">
+                    <label>Nome do Cliente:</label>
+                    <input type="text" id="q46-nome" placeholder="Ex: Ana">
+                    <div style="display:flex; gap:10px; margin-bottom:10px;">
+                        <button class="btn-action" onclick="ex46_adicionar()">Entrar na Fila</button>
+                        <button class="btn-danger" onclick="ex46_atender()">Atender Primeiro</button>
+                    </div>
+                    <button class="btn-toggle" onclick="toggleResultado('res-46')">Mostrar/Ocultar Resultado</button>
+                    <div id="res-46" class="painel-resultado"><p id="out-46">Fila atual: []</p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">47</span>
+                    <h3>Exercício 47: Pesquisa de Dados Acima de um Limite</h3>
+                </div>
+                <div class="card-body">
+                    <label>Medições (por vírgula):</label>
+                    <input type="text" id="q47-vetor" value="12, 45, 67, 23, 89, 90, 34">
+                    <label>Limite Mínimo:</label>
+                    <input type="number" id="q47-limite" value="50">
+                    <button class="btn-toggle" onclick="toggleERun('res-47', ex47)">Ver Resultado</button>
+                    <div id="res-47" class="painel-resultado"><p id="out-47"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">48</span>
+                    <h3>Exercício 48: Comparação entre Dois Vetores</h3>
+                </div>
+                <div class="card-body">
+                    <label>Notas Turma A (por vírgula):</label>
+                    <input type="text" id="q48-v1" value="7, 8, 5, 9, 6">
+                    <label>Notas Turma B (por vírgula):</label>
+                    <input type="text" id="q48-v2" value="6, 8, 4, 10, 5">
+                    <button class="btn-toggle" onclick="toggleERun('res-48', ex48)">Ver Resultado</button>
+                    <div id="res-48" class="painel-resultado"><p id="out-48"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">49</span>
+                    <h3>Exercício 49: Matriz Simplificada Representada por Vetores</h3>
+                </div>
+                <div class="card-body">
+                    <p class="subtext">Consumos fictícios de 3 setores durante 5 dias</p>
+                    <button class="btn-toggle" onclick="toggleERun('res-49', ex49)">Ver Resultado</button>
+                    <div id="res-49" class="painel-resultado"><p id="out-49"></p></div>
+                </div>
+            </article>
+
+            <article class="card-questao">
+                <div class="card-header">
+                    <span class="badge-num">50</span>
+                    <h3>Exercício 50: Desafio Integrador (Painel de Eficiência)</h3>
+                </div>
+                <div class="card-body">
+                    <label>10 Consumos de Unidades Residenciais (kWh):</label>
+                    <input type="text" id="q50-vetor" value="80, 150, 220, 550, 90, 310, 420, 180, 600, 250">
+                    <button class="btn-toggle" onclick="toggleERun('res-50', ex50)">Ver Resultado</button>
+                    <div id="res-50" class="painel-resultado"><p id="out-50"></p></div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
